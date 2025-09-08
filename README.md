@@ -36,3 +36,5 @@ Corporate Training: Companies can adopt quizzes for employee training or complia
 Entertainment: Trivia or general knowledge quizzes can be used purely for fun.
 
 Recruitment: Organizations can evaluate applicants’ knowledge using quizzes.
+
+OUTPUT:<img width="1291" height="570" alt="Image" src="https://github.com/user-attachments/assets/bd7d974f-b742-44ac-803f-eb3eb6436c03" />
