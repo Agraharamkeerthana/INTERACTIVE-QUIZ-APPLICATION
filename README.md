@@ -2,15 +2,15 @@
 
 *COMPANY*:CODTECH IT SOLUTIONS
 
-"NAME":A.KEERTHANA
+*NAME*:A.KEERTHANA
 
-"INTERN ID":CT08DZ242
+*INTERN ID*:CT08DZ242
 
-"DOMAIN":FRONTEND WEB DEVOLOPMENT
+*DOMAIN*:FRONTEND WEB DEVOLOPMENT
 
-"DURATION":8 WEEKS
+*DURATION*:8 WEEKS
 
-"MENTOR":NEELA SANTHOSH KUMAR
+*MENTOR*:NEELA SANTHOSH KUMAR
 
 Task Description:
 The task I performed was the design and development of an Interactive Quiz Application using HTML, CSS, and JavaScript. The main objective of this task was to create a browser-based quiz system that allows users to test their knowledge on a set of questions and receive immediate feedback. This type of application is not only enjoyable but also a valuable learning tool, as it encourages participation and provides a structured way of evaluating knowledge. The quiz application was designed to display one question at a time, allow users to select an option, provide instant validation (correct or incorrect), and maintain a running score. At the end of the quiz, the user receives their final score along with a completion message. The application focuses on being lightweight, fast, and fully client-side, meaning it runs directly in the user’s browser without requiring any server backend. During the development of this task, several steps were taken. First, I structured the project into three main parts: the HTML file for the structure of the quiz, the CSS file for styling and presentation, and the JavaScript code for logic and interactivity. Second, I designed the user interface in a way that was simple yet visually appealing, ensuring that buttons, questions, and results were easy to understand. Finally, I integrated JavaScript functions to handle events such as selecting an option, submitting answers, validating correctness, tracking scores, and displaying results. This task provided a complete end-to-end experience of building an interactive front-end project, starting from idea to execution, while also reinforcing the concepts of DOM manipulation, event handling, and user experience design.
