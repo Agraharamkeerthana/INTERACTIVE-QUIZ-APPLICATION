@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Interactive Quiz</title>
+<style>
+  body {
+    font-family: 'Merriweather', sans-serif;
+    background :#f7f7f7 ;
+    display: flex;
+    justify-content: center;
+    padding: 25px;
+  }
+  #quiz-container {
+    background: rgb(104, 173, 104);
+    padding: 30px 50px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(126, 82, 104, 0.1);
+    width: 600px;
+  }
+  h2 {
+    margin-bottom: 20px;
+  }
+  .option {
+    background:#c7c1d6;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: 4px solid transparent;
+  }
+  .option:hover {
+    background: #ddd;
+  }
+  .option.selected {
+    border-color: #e95fbb;
+    background: #cce5ff;
+  }
+  #submit-btn {
+    margin-top: 20px;
+    background: #e95fbb;
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  #submit-btn:disabled {
+    background: #c7c1d6;
+    cursor: not-allowed;
+  }
+  #result {
+    margin-top: 20px;
+    font-size: 18px;
+  }
+</style>
+</head>
+<body>
+<div id="quiz-container">
+  <h2 id="question">Question text</h2>
+  <div id="options">
+    <!-- Options will be injected here -->
+  </div>
+  <button id="submit-btn" disabled>Submit</button>
+  <div id="result"></div>
+</div>
+
+<script>
+  const quizData = [
+    {
+      question: " What does HTML stand for?",
+      options: ["HyperText Markup Language", "Home Tool Markup Language", "Hyperlinks and Text Markup Language", "Hyper Transfer Markup Language"],
+      answer: 0,
+    },
+    {
+      question:"Which tag is used to create a hyperlink in HTML?",
+      options: ["<link>", "<a>", "<href>", "<hyperlink>"],
+      answer: 1,
+    },
+    {
+      question: " Which HTML element is used to define the title of a document?",
+      options: ["<meta>", "<header>", "<title>", "<head>"],
+      answer: 2,
+      },
+      {
+      question:" Which HTML element is used to insert a line break?",
+      options:["<br>", "<lb>", "<break>", "<newline>"],
+      answer:0,
+      }, 
+      {
+      question:" How do you add a comment in HTML?",
+      options:["// This is a comment","<!-- This is a comment -->"," /* This is a comment */","# This is a comment"],
+      answer:1,
+      },
+  ];
+
+  let currentQuestion = 0;
+  let selectedOption = null;
+  let score = 0;
+
+  const questionEl = document.getElementById("question");
+  const optionsEl = document.getElementById("options");
+  const submitBtn = document.getElementById("submit-btn");
+  const resultEl = document.getElementById("result");
+
+  function loadQuestion() {
+    const q = quizData[currentQuestion];
+    questionEl.textContent = q.question;
+    optionsEl.innerHTML = "";
+
+    q.options.forEach((option, index) => {
+      const optionDiv = document.createElement("div");
+      optionDiv.classList.add("option");
+      optionDiv.textContent = option;
+      optionDiv.dataset.index = index;
+      optionDiv.addEventListener("click", () => {
+        selectOption(index);
+      });
+      optionsEl.appendChild(optionDiv);
+    });
+
+    selectedOption = null;
+    submitBtn.disabled = true;
+    resultEl.textContent = "";
+  }
+
+  function selectOption(index) {
+    selectedOption = index;
+    Array.from(optionsEl.children).forEach((optionDiv) => {
+      optionDiv.classList.remove("selected");
+    });
+    optionsEl.children[index].classList.add("selected");
+    submitBtn.disabled = false;
+  }
+
+  submitBtn.addEventListener("click", () => {
+    if (selectedOption === quizData[currentQuestion].answer) {
+      score++;
+      resultEl.style.color = "black";
+      resultEl.textContent = "Correct!";
+    } else {
+      resultEl.style.color = "red";
+      resultEl.textContent = `Wrong! The correct answer was: ${quizData[currentQuestion].options[quizData[currentQuestion].answer]}`;
+    }
+
+    submitBtn.disabled = true;
+    // After a short delay, load the next question or show results
+    setTimeout(() => {
+      currentQuestion++;
+      if (currentQuestion < quizData.length) {
+        loadQuestion();
+      } else {
+        showFinalResult();
+      }
+    }, 1500);
+  });
+
+  function showFinalResult() {
+    questionEl.textContent = "Quiz Completed!";
+    optionsEl.innerHTML = "";
+    submitBtn.style.display = "none";
+    resultEl.style.color = "black";
+    resultEl.textContent = `Your final score is ${score} out of ${quizData.length}`;
+  }
+
+  // Initialize quiz
+  loadQuestion();
+</script>
+</body>
+</html>
